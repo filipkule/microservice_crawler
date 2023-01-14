@@ -47,7 +47,7 @@ public class CrawlServiceImpl implements CrawlService {
         return crawledPage.getUrl();
     }
 
-    private CrawledPage extractDataFromUrl(Document htmlDocument){
+    public CrawledPage extractDataFromUrl(Document htmlDocument){
         return CrawledPage.builder()
                 .url(htmlDocument.location())
                 .title(htmlDocument.title())
@@ -55,7 +55,7 @@ public class CrawlServiceImpl implements CrawlService {
                 .build();
     }
 
-    private NewFoundHyperlinks extractHyperlinksFromUrl(Document htmlDocument){
+    public NewFoundHyperlinks extractHyperlinksFromUrl(Document htmlDocument){
         Elements hyperlinks = htmlDocument.select("a");
 
         Set<String> pageHyperlinks = hyperlinks.stream().filter(hyperlink ->
@@ -70,7 +70,7 @@ public class CrawlServiceImpl implements CrawlService {
                 .build();
     }
 
-    private String escapeCharacters(String html){
+    public String escapeCharacters(String html){
         html = StringEscapeUtils.escapeHtml(html);
         html = StringEscapeUtils.escapeJavaScript(html);
         html = StringEscapeUtils.escapeXml(html);

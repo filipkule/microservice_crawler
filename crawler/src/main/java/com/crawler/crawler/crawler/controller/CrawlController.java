@@ -18,4 +18,9 @@ public class CrawlController {
         return response;
     }
 
+    @GetMapping("/checkAlive")
+    public Boolean checkAlive() {
+        return Boolean.TRUE;
+    }
+
 }
